@@ -1,0 +1,19 @@
+body {
+  font-family: "Arial", "Helvetica", sans-serif;
+  margin: 4px;
+}
+
+.equipments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.equipment__images-list {
+  list-style: none;
+  padding: 0;
+}
+
+.equipment__images-list img {
+  max-width: 100%;
+  cursor: pointer;
+}

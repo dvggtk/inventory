@@ -1,0 +1,29 @@
+[
+  {
+    "_id": "b7b6fe3c-5688-4be3-b745-bf8c8d8ca618",
+    "model": "KYOCERA ECOSYS P2135D",
+    "inventoryNumber": "123456789-98765431",
+    "office": "библиотека",
+    "respPerson": "Василий Иванович Чапаев",
+	"images" : ["59cee4e6-857f-4318-97e6-2b7cd9df0cee.jpg"],
+    "_fake": true
+  },
+  {
+    "_id": "4b36f3a0-70a1-4dfa-91f1-034dd6a819b5",
+    "model": "HP LaserJet 1200",
+    "inventoryNumber": "1234512354-95422345",
+    "office": "библиотека",
+    "respPerson": "Василий Иванович Чапаев",
+	"images" : ["1bd2e561-fe42-43ac-bdf3-1d6a0ad87eb2.jpg"],
+    "_fake": true
+  },
+  {
+    "_id": "3dbeab36-3f20-4f06-9308-38ed61206a41",
+    "model": "Canon LBP-1120",
+    "inventoryNumber": "1234512354-23486753",
+    "office": "библиотека",
+    "respPerson": "Василий Иванович Чапаев",
+	"images" : ["33a62723-73d9-4c48-a5bf-ee31c7b0837e.jpg"],
+    "_fake": true
+  }
+]

@@ -1,7 +1,10 @@
 extends layout
 
+block scripts
+  script(src="index.js")
+
 block content
-  h1 Оргтехника
+  h2 Оргтехника
 
   ul.equipments-list
     each equipment, idx in equipments

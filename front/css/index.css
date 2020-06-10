@@ -1,0 +1,31 @@
+@import "normalize.css";
+
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
+html {
+  background-color: silver;
+}
+
+body {
+  font-family: "Arial", "Helvetica", sans-serif;
+  padding: 0 4px;
+  max-width: 768px;
+  background-color: white;
+}
+
+.equipments-list {
+  list-style: none;
+  padding: 0;
+}
+
+.equipment__images-list {
+  list-style: none;
+  padding: 0;
+}
+
+.equipment__images-list img {
+  max-width: 100%;
+  cursor: pointer;
+}

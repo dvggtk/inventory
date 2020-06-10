@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www"
+    "start": "gulp build && node ./bin/www"
   },
   "engines": {
     "node": "^12.0.0"
@@ -12,8 +12,26 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "glob-watcher": "^5.0.3",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "normalize-path": "^3.0.0",
     "pug": "~3.0.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^9.8.0",
+    "browser-sync": "^2.26.7",
+    "del": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-csso": "^4.0.1",
+    "gulp-html-bem-validator": "^1.0.5",
+    "gulp-plumber": "^1.2.1",
+    "gulp-postcss": "^8.0.0",
+    "gulp-rename": "^2.0.0",
+    "gulp-sourcemaps": "^2.6.5",
+    "gulp-w3c-html-validator": "^2.0.1",
+    "postcss-import": "^12.0.1",
+    "webpack": "^4.43.0",
+    "webpack-stream": "^5.2.1"
   }
 }

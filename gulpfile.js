@@ -8,11 +8,9 @@ const script = require(`./gulp/script`);
 const validateHTML = require(`./gulp/validate-html`);
 
 const build = gulp.series(clean, copy, html, style, script);
-const front = gulp.series(build, validateHTML, serve);
 const validate = gulp.series(clean, copy, html, validateHTML);
 
 module.exports = {
-  front,
   build,
   validate,
   clean,

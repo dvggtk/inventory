@@ -19,11 +19,8 @@
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
     "normalize-path": "^3.0.0",
-    "pug": "~3.0.0"
-  },
-  "devDependencies": {
+    "pug": "~3.0.0",
     "autoprefixer": "^9.8.0",
-    "browser-sync": "^2.26.7",
     "del": "^5.1.0",
     "gulp-csso": "^4.0.1",
     "gulp-html-bem-validator": "^1.0.5",
@@ -35,5 +32,7 @@
     "postcss-import": "^12.0.1",
     "webpack": "^4.43.0",
     "webpack-stream": "^5.2.1"
+  },
+  "devDependencies": {
   }
 }

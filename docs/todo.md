@@ -1,1 +1,1 @@
-* добавить разные варианты сборки для development и production
+* добавить разные варианты сборки для development и production ✔️

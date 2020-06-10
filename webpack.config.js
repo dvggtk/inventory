@@ -1,7 +1,14 @@
+require("dotenv").config();
+
 const path = require(`path`);
 
+let mode = `development`;
+if (process.env.NODE_ENV === "production") {
+  mode = "production";
+}
+
 module.exports = {
-  mode: `development`,
+  mode,
   entry: {
     index: `./front/js/index.js`,
     _sse: `./front/js/_sse.js`

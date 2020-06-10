@@ -1,6 +1,5 @@
 const gulp = require("gulp");
 
-const serve = require(`./gulp/serve`);
 const clean = require(`./gulp/clean`);
 const copy = require(`./gulp/copy`);
 const html = require(`./gulp/html`);
@@ -20,6 +19,5 @@ module.exports = {
   copy,
   html,
   style,
-  script,
-  serve
+  script
 };

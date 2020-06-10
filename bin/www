@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 
+require("dotenv").config();
+console.log(`NODE_ENV=${process.env.NODE_ENV}`);
+
 /**
  * Module dependencies.
  */

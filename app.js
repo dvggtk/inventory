@@ -21,6 +21,11 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());
 
+app.use((req, res, next) => {
+  res.locals.NODE_ENV = req.app.get("env");
+  next();
+});
+
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 

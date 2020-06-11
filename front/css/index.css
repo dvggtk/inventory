@@ -1,4 +1,8 @@
 @import "normalize.css";
+@import "visuallyhidden.css";
+
+@import "blocks/equipment.css";
+@import "blocks/equipments-list.css";
 
 *, *::before, *::after {
 	box-sizing: border-box;
@@ -14,19 +18,4 @@ body {
   max-width: 768px;
   background-color: white;
   border-top: 1px solid transparent;
-}
-
-.equipments-list {
-  list-style: none;
-  padding: 0;
-}
-
-.equipment__images-list {
-  list-style: none;
-  padding: 0;
-}
-
-.equipment__images-list img {
-  max-width: 100%;
-  cursor: pointer;
 }

@@ -1,0 +1,15 @@
+.equipment__images-list {
+  list-style: none;
+  padding: 0;
+}
+
+.equipment__images-list img {
+  display: block;
+  width: 100%;
+  max-width: 320px;
+  cursor: pointer;
+}
+
+.equipment__image {
+  border: 1px solid #ccc;
+}

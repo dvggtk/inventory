@@ -1,0 +1,14 @@
+.equipments-list {
+  list-style: none;
+  padding: 0;
+  counter-reset: idx;
+}
+
+.equipments-list__item:not(:first-child) {
+  margin-top: 16px;
+}
+
+.equipments-list__item::before {
+  counter-increment: idx;
+  content: "#" counter(idx)
+}

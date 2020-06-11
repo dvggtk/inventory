@@ -1,4 +1,5 @@
 const gulp = require(`gulp`);
+const plumber = require(`gulp-plumber`);
 const rollup = require("gulp-rollup");
 const sourcemaps = require("gulp-sourcemaps");
 const terser = require("rollup-plugin-terser").terser;
@@ -12,6 +13,7 @@ function script() {
   return (
     gulp
       .src("./front/js/**/*.js")
+      .pipe(plumber())
       .pipe(sourcemaps.init())
       // transform the files here.
       .pipe(

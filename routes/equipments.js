@@ -29,7 +29,12 @@ router.get("/img/:imgfile", function (req, res, next) {
   const imgfile = req.params.imgfile;
   const pathname = path.resolve(__dirname, "../storage/db/img/", imgfile);
 
-  fs.createReadStream(pathname).pipe(res);
+  fs.createReadStream(pathname)
+    .on("error", (err) => {
+      if (err.code === "ENOENT") return next();
+      return next(err);
+    })
+    .pipe(res);
 });
 
 module.exports = router;

@@ -7,22 +7,5 @@ block scripts
   <script defer src="js/index.js"></script>
 
 block content
-  #app
-
   h2 Оргтехника
-
-  ul.equipments-list
-    each equipment, idx in equipments
-      li(class="equipments-list__item equipment")
-        .equipment__idx= idx + 1
-        .equipment__inventory-number #{equipment.inventoryNumber}
-        .equipment__model #{equipment.model}
-        .equipment__office #{equipment.office}
-        .equipment__resp-person #{equipment.respPerson}
-        .equipment__id #{equipment._id}
-        ul.equipment__images-list
-          each image, imgNo in equipment.images
-            li.equipment__image
-              a(href="equipments/img/" + image)
-                img(src="equipments/img/" + image, alt="Оргтехника, один экземпляр")
-
+  #app

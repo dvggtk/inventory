@@ -1,11 +1,31 @@
 const gulp = require(`gulp`);
-const webpack = require("webpack");
-const gulpWebpack = require("webpack-stream");
-const webpackConfig = require("../webpack.config.js");
+const rollup = require("gulp-rollup");
+const sourcemaps = require("gulp-sourcemaps");
+const terser = require("rollup-plugin-terser").terser;
 
-module.exports = function script() {
-  return gulp
-    .src(`./front/js/index.js`)
-    .pipe(gulpWebpack(webpackConfig, webpack))
-    .pipe(gulp.dest("public"));
-};
+let rollupPlugins = [];
+if (process.env.NODE_ENV === "production") {
+  rollupPlugins = [terser()];
+}
+
+function script() {
+  return (
+    gulp
+      .src("./front/js/**/*.js")
+      .pipe(sourcemaps.init())
+      // transform the files here.
+      .pipe(
+        rollup({
+          input: ["./front/js/index.js", "./front/js/_sse.js"],
+          output: {
+            format: "cjs"
+          },
+          plugins: rollupPlugins
+        })
+      )
+      .pipe(sourcemaps.write("."))
+      .pipe(gulp.dest("./public"))
+  );
+}
+
+module.exports = script;

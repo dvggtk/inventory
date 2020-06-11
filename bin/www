@@ -3,6 +3,11 @@
 require("dotenv").config();
 console.log(`NODE_ENV=${process.env.NODE_ENV}`);
 
+const path = require("path");
+const workingDirectory = path.resolve(__dirname, "..");
+process.chdir(workingDirectory);
+console.log(`working directory: ${process.cwd()}`);
+
 /**
  * Module dependencies.
  */

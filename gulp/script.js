@@ -2,6 +2,7 @@ const rollup = require("rollup");
 const svelte = require("rollup-plugin-svelte");
 const resolve = require("@rollup/plugin-node-resolve");
 const commonjs = require("@rollup/plugin-commonjs");
+const {terser} = require("rollup-plugin-terser");
 const path = require("path");
 
 const production = process.env.NODE_ENV === "production";

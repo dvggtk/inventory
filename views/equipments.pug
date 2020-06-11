@@ -1,9 +1,14 @@
 extends layout
 
+block styles
+  <link rel="stylesheet" href="/css/svelte.css">
+
 block scripts
-  script(src="index.js")
+  <script defer src="js/index.js"></script>
 
 block content
+  #app
+
   h2 Оргтехника
 
   ul.equipments-list

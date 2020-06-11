@@ -5,8 +5,9 @@ html(lang="ru")
     meta(name="viewport", content="width=device-width, initial-scale=1.0")
     title= title
     link(rel='stylesheet', href='/css/style.css')
+    block styles
     unless (NODE_ENV === "production")
-      script(src="/_sse.js")
+      script(src="/js/_sse.js")
     block scripts
   body
     block content

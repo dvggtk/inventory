@@ -52,7 +52,7 @@ app.use(function (err, req, res, next) {
   res.status(err.status || 500);
   res.render("error");
 
-  if (req.app.get("env") === "development") {
+  if (true || req.app.get("env") === "development") {
     console.error(err);
   }
 });

@@ -4,7 +4,7 @@ const router = express.Router();
 //TODO check https://www.npmjs.com/package/express-fileupload
 const multer = require("multer");
 const storage = multer.memoryStorage();
-const upload = multer({storage, limits: {fileSize: 5000000}});
+const upload = multer({storage, limits: {fileSize: 10 * 1024 * 1024}});
 
 const fs = require("fs");
 const path = require("path");

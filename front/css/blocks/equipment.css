@@ -12,4 +12,9 @@
 
 .equipment__image {
   border: 1px solid #ccc;
+  position: relative;
+}
+
+.equipment__image--new {
+  border-color: green;
 }

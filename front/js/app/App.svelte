@@ -23,10 +23,7 @@
     const {equipment, files} = e.detail;
     const file = files[0];
 
-    console.log("onAddImage", files);
     const url = await submitImage(equipment, file);
-
-    console.log("onAddImage");
 
     equipment.images.push({url});
     equipments = equipments;

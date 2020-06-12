@@ -16,11 +16,9 @@ export async function deleteImage(equipment, image) {
   const json = await res.json();
 }
 
-export async function submitImage(equipment, image) {
+export async function submitImage(equipment, file) {
   const formData = new FormData();
-
-  const {url, original} = image;
-  formData.append("image", original);
+  formData.append("image", file);
 
   const res = await fetch(`/api/equipments/${equipment._id}/images`, {
     method: "POST",

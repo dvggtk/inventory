@@ -7,22 +7,6 @@
 
   let equipments = [];
 
-  async function onSubmitImage (e) {
-    const {equipment, image} = e.detail;
-
-    const url = await submitImage(equipment, image);
-    image.url = url;
-    delete image.original;
-    equipments = equipments;
-  };
-
-  function onCancelImage (e) {
-    const {equipment, image} = e.detail;
-    URL.revokeObjectURL(image.url);
-    equipment.images = equipment.images.filter((img) => img !== image);
-    equipments = equipments;
-  };
-
   async function onDeleteImage (e) {
     const {equipment, image} = e.detail;
 
@@ -35,12 +19,16 @@
     equipments = equipments;
   };
 
-  function onAddImage(e) {
-    const equipment = e.detail.equipment;
-    const file = e.detail.files[0];
-    const url = URL.createObjectURL(file);
+  async function onAddImage(e) {
+    const {equipment, files} = e.detail;
+    const file = files[0];
 
-    equipment.images.push({url, original: file});
+    console.log("onAddImage", files);
+    const url = await submitImage(equipment, file);
+
+    console.log("onAddImage");
+
+    equipment.images.push({url});
     equipments = equipments;
   }
 
@@ -54,11 +42,6 @@
 
 <hr>
 
-<InputFile accept="image/*" on:input={onAddImage} equipment={null}/>
-
-<hr>
-
-
 <ul class="equipments-list">
   {#if equipments}
     {#each equipments as equipment, idx (equipment._id)}
@@ -71,7 +54,7 @@
         <ul class="equipment__images-list">
           {#each equipment.images as image, imgNo (image.url)}
             <li class="equipment__image">
-              <Image {equipment} {image} on:submit={onSubmitImage} on:cancel={onCancelImage} on:delete={onDeleteImage}/>
+              <Image {equipment} {image} on:delete={onDeleteImage}/>
             </li>
           {/each}
         </ul>

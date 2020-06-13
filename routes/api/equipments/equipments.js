@@ -60,24 +60,17 @@ router.post("/:eqUuid/images", upload.single("image"), function (
   next
 ) {
   (async () => {
-    const files = await fs.promises.readdir(IMAGE_DB_PATH);
-
-    //FIXME временное ограничение количества фото в базе данных
-    if (files.length > 20) throw Error("Превышен лимит фото в базе данных");
-
     const {eqUuid} = req.params;
-    const doc = await db.get(eqUuid);
 
     const filetype = String(req.file.originalname)
       .match(/\.([^\.]+)$/)[1]
       .toLowerCase();
     const filename = `${uuid()}.${filetype}`;
-    const filepath = path.resolve(IMAGE_DB_PATH, filename);
-    const url = IMAGE_BASE + filename;
 
-    await fs.promises.writeFile(filepath, req.file.buffer);
-    doc.images.push({filename});
-    await db.put(doc);
+    const buffer = req.file.buffer;
+
+    const image = await db.addImage(eqUuid, filename, buffer);
+    const url = IMAGE_BASE + image.filename;
 
     res.json({url});
   })().catch((err) => next(err));

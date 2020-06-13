@@ -14,6 +14,8 @@
 <script>
   export let accept;
   export let equipment;
+  export let isLoading = false;
+
 
   import { createEventDispatcher } from 'svelte';
   const dispatch = createEventDispatcher();
@@ -27,12 +29,17 @@
 </script>
 
 <label class="input-file">
-  <span class="input-file__button">➕ Добавить фото</span>
+  {#if isLoading}
+    <span class="input-file__button">⏳ Загружается файл</span>
+  {:else}
+    <span class="input-file__button">➕ Добавить фото</span>
+  {/if}
   <input
     type="file"
     class="visually-hidden input-file__input"
     {accept}
     on:input={input}
+    disabled = {isLoading}
   >
 </label>
 

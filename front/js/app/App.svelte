@@ -21,11 +21,15 @@
 
   async function onAddImage(e) {
     const {equipment, files} = e.detail;
+    equipment._isLoadingImage = true;
+    equipments = equipments;
+
     const file = files[0];
 
     const image = await submitImage(equipment, file);
 
     equipment.images.push(image);
+    delete equipment._isLoadingImage;
     equipments = equipments;
   }
 
@@ -55,7 +59,7 @@
             </li>
           {/each}
         </ul>
-        <InputFile accept="image/*" on:input={onAddImage} equipment={equipment}/>
+        <InputFile accept="image/*" on:input={onAddImage} equipment={equipment} isLoading={equipment._isLoadingImage}/>
       </li>
     {/each}
   {/if}

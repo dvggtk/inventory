@@ -9,6 +9,7 @@ const upload = multer({storage, limits: {fileSize: 10 * 1024 * 1024}});
 const {db} = require("../../../lib/db");
 
 const IMAGE_BASE = "/equipments/img/";
+const IMAGE_ORIGINAL_BASE = "/equipments/img/original/";
 
 router.get("/", function (req, res, next) {
   (async () => {
@@ -17,7 +18,8 @@ router.get("/", function (req, res, next) {
     for (const doc of docs) {
       doc.images = doc.images.map((image) => {
         const url = IMAGE_BASE + image.filename;
-        return {url};
+        const urlOriginal = IMAGE_ORIGINAL_BASE + image.filename;
+        return {url, urlOriginal};
       });
     }
 

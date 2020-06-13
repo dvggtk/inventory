@@ -26,7 +26,7 @@
 </style>
 
 <div style="position: relative;">
-  <a href={image.url}>
+  <a href={image.urlOriginal}>
     <img src={image.url} alt="Оргтехника, один экземпляр"/>
   </a>
   <button

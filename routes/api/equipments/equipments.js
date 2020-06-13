@@ -51,8 +51,9 @@ router.post("/:eqUuid/images", upload.single("image"), function (
 
     const image = await db.addImage(eqUuid, originalFilename, buffer);
     const url = IMAGE_BASE + image.filename;
+    const urlOriginal = IMAGE_ORIGINAL_BASE + image.filename;
 
-    res.json({url});
+    res.json({url, urlOriginal});
   })().catch((err) => next(err));
 });
 

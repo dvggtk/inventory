@@ -26,5 +26,5 @@ export async function submitImage(equipment, file) {
   });
   const json = await res.json();
 
-  return json.url;
+  return json;
 }

@@ -23,9 +23,9 @@
     const {equipment, files} = e.detail;
     const file = files[0];
 
-    const url = await submitImage(equipment, file);
+    const image = await submitImage(equipment, file);
 
-    equipment.images.push({url});
+    equipment.images.push(image);
     equipments = equipments;
   }
 

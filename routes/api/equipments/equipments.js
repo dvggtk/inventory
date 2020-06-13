@@ -6,14 +6,9 @@ const multer = require("multer");
 const storage = multer.memoryStorage();
 const upload = multer({storage, limits: {fileSize: 10 * 1024 * 1024}});
 
-const fs = require("fs");
-const path = require("path");
-
 const {db} = require("../../../lib/db");
-const {uuid} = require("../../../lib/utils");
 
 const IMAGE_BASE = "/equipments/img/";
-const IMAGE_DB_PATH = path.resolve(__dirname, "../../..", "storage/db/img"); //TODO сделать config для путей
 
 router.get("/", function (req, res, next) {
   (async () => {
@@ -35,20 +30,7 @@ router.delete("/:eqUuid/images/:filename", function (req, res, next) {
   const {eqUuid, filename} = req.params;
 
   (async () => {
-    const doc = await db.get(eqUuid);
-    const image = doc.images.find((img) => img.filename === filename);
-
-    if (!image) return next();
-
-    doc.images = doc.images.filter((img) => img !== image);
-
-    await db.put(doc);
-
-    try {
-      imgPath = path.resolve(IMAGE_DB_PATH, filename);
-      await fs.promises.unlink(imgPath);
-    } catch (err) {}
-
+    const doc = await db.deleteImage(eqUuid, filename);
     res.json(doc);
   })().catch((err) => next(err));
 });
@@ -61,15 +43,11 @@ router.post("/:eqUuid/images", upload.single("image"), function (
 ) {
   (async () => {
     const {eqUuid} = req.params;
-
-    const filetype = String(req.file.originalname)
-      .match(/\.([^\.]+)$/)[1]
-      .toLowerCase();
-    const filename = `${uuid()}.${filetype}`;
+    const originalFilename = req.file.originalname;
 
     const buffer = req.file.buffer;
 
-    const image = await db.addImage(eqUuid, filename, buffer);
+    const image = await db.addImage(eqUuid, originalFilename, buffer);
     const url = IMAGE_BASE + image.filename;
 
     res.json({url});

@@ -25,11 +25,15 @@
     equipments = equipments;
 
     const file = files[0];
+    try {
+      const image = await submitImage(equipment, file);
+      equipment.images.push(image);
+    } catch (err) {
+      alert(`Ошибка ${err.message}`)
+    } finally {
+      delete equipment._isLoadingImage;
+    }
 
-    const image = await submitImage(equipment, file);
-
-    equipment.images.push(image);
-    delete equipment._isLoadingImage;
     equipments = equipments;
   }
 

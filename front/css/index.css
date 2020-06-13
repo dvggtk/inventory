@@ -15,7 +15,7 @@ html {
 body {
   font-family: "Arial", "Helvetica", sans-serif;
   padding: 0 4px;
-  max-width: 768px;
+  max-width: 640px;
   background-color: white;
   border-top: 1px solid transparent;
 }

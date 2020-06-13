@@ -9,11 +9,11 @@ const upload = multer({storage, limits: {fileSize: 10 * 1024 * 1024}});
 const fs = require("fs");
 const path = require("path");
 
-const {db} = require("../../lib/db");
-const {uuid} = require("../../lib/utils");
+const {db} = require("../../../lib/db");
+const {uuid} = require("../../../lib/utils");
 
 const IMAGE_BASE = "/equipments/img/";
-const IMAGE_DB_PATH = path.resolve(__dirname, "../..", "storage/db/img"); //TODO сделать config для путей
+const IMAGE_DB_PATH = path.resolve(__dirname, "../../..", "storage/db/img"); //TODO сделать config для путей
 
 router.get("/", function (req, res, next) {
   (async () => {

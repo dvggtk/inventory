@@ -8,7 +8,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
 
 const equipmentsRouter = require("./routes/equipments");
-const apiRouter = require("./routes/api");
+const apiRouter = require("./routes/api/equipments");
 
 const app = express();
 

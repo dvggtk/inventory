@@ -1,7 +1,9 @@
 export async function getEquipments() {
   const res = await fetch(`/api/equipments`);
-  const equipments = await res.json();
 
+  if (!res.ok) throw Error(res.status + " " + res.statusText);
+
+  const equipments = await res.json();
   return equipments;
 }
 
@@ -12,6 +14,8 @@ export async function deleteImage(equipment, image) {
     `/api/equipments/${equipment._id}/images/${filename}`,
     {method: "DELETE"}
   );
+
+  if (!res.ok) throw Error(res.status + " " + res.statusText);
 
   const json = await res.json();
 }

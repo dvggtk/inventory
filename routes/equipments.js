@@ -55,7 +55,7 @@ router.get(
   sendFile
 );
 
-async function sendFile(req, res, next) {
+function sendFile(req, res, next) {
   const filepath = req.filepath;
 
   if (!filepath) return next(new Error("Не указан файл для отправки"));

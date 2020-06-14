@@ -19,20 +19,26 @@
     equipments = equipments;
   };
 
-  async function onAddImage(e) {
+  function onAddImage(e) {
     const {equipment, files} = e.detail;
-    equipment._isLoadingImage = true;
-    equipments = equipments;
 
     const file = files[0];
-    try {
-      const image = await submitImage(equipment, file);
-      equipment.images.push(image);
-    } catch (err) {
-      alert(`Ошибка ${err.message}`)
-    } finally {
-      delete equipment._isLoadingImage;
-    }
+    const image = {url: "loading" + Math.random()};
+    equipment.images.push(image);
+
+    (async () => {
+      try {
+        const img = await submitImage(equipment, file);
+        for (const [key, value] of Object.entries(img)) {
+          image[key] = value;
+        }
+      } catch (err) {
+          console.error(err);
+          equipment.images = equipment.images.filter((img) => img !== image);
+      } finally {
+        equipments = equipments;
+      }
+    })();
 
     equipments = equipments;
   }
@@ -43,6 +49,12 @@
 </script>
 
 <style>
+  .image-placeholder {
+    padding: 30px 0;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }
 </style>
 
 <hr>
@@ -59,7 +71,11 @@
         <ul class="equipment__images-list">
           {#each equipment.images as image, imgNo (image.url)}
             <li class="equipment__image">
-              <Image {equipment} {image} on:delete={onDeleteImage}/>
+              {#if !image.url.startsWith("loading")}
+                <Image {equipment} {image} on:delete={onDeleteImage}/>
+              {:else}
+                <div class="image-placeholder">⏳ Загружается фото</div>
+              {/if}
             </li>
           {/each}
         </ul>

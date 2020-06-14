@@ -29,6 +29,10 @@ router.get("/img/:imgfile", function (req, res, next) {
   const imgfile = req.params.imgfile;
   const pathname = path.resolve(__dirname, "../storage/db/img/", imgfile);
 
+  res.set({
+    "Cache-Control": "immutable"
+  });
+
   fs.createReadStream(pathname)
     .on("error", (err) => {
       if (err.code === "ENOENT") return next();
@@ -44,6 +48,10 @@ router.get("/img/original/:imgfile", function (req, res, next) {
     "../storage/db/img/original",
     imgfile
   );
+
+  res.set({
+    "Cache-Control": "immutable"
+  });
 
   fs.createReadStream(pathname)
     .on("error", (err) => {

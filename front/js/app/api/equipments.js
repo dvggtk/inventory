@@ -24,7 +24,9 @@ export async function submitImage(equipment, file) {
     method: "POST",
     body: formData
   });
-  const json = await res.json();
 
+  if (!res.ok) throw Error(res.status + " " + res.statusText);
+
+  const json = await res.json();
   return json;
 }

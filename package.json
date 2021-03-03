@@ -34,7 +34,7 @@
     "multer": "^1.4.2",
     "normalize-path": "^3.0.0",
     "postcss-import": "^12.0.1",
-    "pug": "~3.0.0",
+    "pug": "~3.0.1",
     "rollup": "^2.15.0",
     "rollup-plugin-svelte": "^5.2.2",
     "rollup-plugin-terser": "^6.1.0",
